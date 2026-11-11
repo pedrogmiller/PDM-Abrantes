@@ -12,6 +12,8 @@ Fonte: MuniSIG de Abrantes, serviço ArcGIS `PMOTs/PDM_2026/MapServer`, consulta
 | `agregados/` | `PDM_ordenamento.shp`, `PDM_ordenamento_riscos_EEM.shp` e `PDM_condicionantes.shp`, com o campo `CLASSE`, para usar no `gerar_implantacao.py` |
 | `dados/original/` | A resposta original do servidor (Esri JSON, comprimida) |
 | `mapas/` | Mapas de verificação |
+| `Matriz_PDM_Abrantes_Amarvento.md` | Regime de cada camada (interdito, condicionado, permitido) com os artigos do RPDM e do RJREN, e o cruzamento com o layout |
+| `cruzamento_*.csv` | m² afetados por camada e por turbina |
 | `scripts/` | Como foi extraído e convertido |
 
 Os polígonos são inteiros, não recortados pela área.
@@ -21,8 +23,7 @@ Os polígonos são inteiros, não recortados pela área.
 2. Copia o `token` do Payload de um pedido `export`.
 3. Cola `scripts/1_extrair_MuniSIG.js` (com o token e a área) na Consola dessa página. Descarrega um JSON.
 4. `python scripts/2_json_para_shapefiles.py <json> <pasta>` e depois `scripts/3_separar_por_subcategoria.py`.
-5. Camadas com mais de 2000 polígonos ficam cortadas: usa `scripts/4_extrair_camada_grande.js`.
+5. Camadas com mais de 2000 polígonos ficam cortadas: usa `scripts/4_extrair_camada_grande.js` (foi assim que se obteve a PIF completa, `dados/original/PIF_Abrantes_Amarvento.json.gz`).
 
 ## Limitações
-- **PIF 2025 (perigosidade de incêndio) está INCOMPLETA**, porque o servidor devolveu só 2000 polígonos (cerca de 38% da área). Ver `mapas/PIF_incompleto.png`.
 - Fora do PDM (por exemplo Rede Natura e servidões aeronáuticas) não está incluído.
