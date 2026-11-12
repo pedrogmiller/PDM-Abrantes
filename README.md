@@ -27,3 +27,6 @@ Os polígonos são inteiros, não recortados pela área.
 
 ## Limitações
 - Fora do PDM (por exemplo Rede Natura e servidões aeronáuticas) não está incluído.
+
+## Perigosidade de incêndio
+Em `por_subcategoria/` está uma **versão generalizada** (manchas < 500 m² absorvidas pela classe vizinha com maior fronteira comum; 6 781 → 943 polígonos), para visualização. O original exato está em `dados/pif/145_PIF_Abrantes_2025.shp` e é o usado em `cruzamento_layout_PIF.csv`.
