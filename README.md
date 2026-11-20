@@ -30,3 +30,6 @@ Os polígonos são inteiros, não recortados pela área.
 
 ## Perigosidade de incêndio
 Em `por_subcategoria/` está uma **versão generalizada** (manchas < 500 m² absorvidas pela classe vizinha com maior fronteira comum; 6 781 → 943 polígonos), para visualização. O original exato está em `dados/pif/145_PIF_Abrantes_2025.shp` e é o usado em `cruzamento_layout_PIF.csv`.
+
+## Cores por regime (`por_subcategoria/`)
+Cada shapefile tem ao lado um `.qml` com o mesmo nome, que o QGIS aplica automaticamente: vermelhos = interdito, laranjas = condicionado (título, parecer ou comunicação prévia), verdes = permitido, cinzentos = informativo. Tons e tramas diferentes distinguem as subcategorias dentro do mesmo regime. Cada camada tem os campos `REGIME` e `BASE` (artigo). Legenda em `mapas/Legenda_regime_por_subcategoria.png`. Quando duas camadas se sobrepõem, vale a mais restritiva.
