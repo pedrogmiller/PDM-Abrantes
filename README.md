@@ -10,6 +10,9 @@ Fonte: MuniSIG de Abrantes, serviço ArcGIS `PMOTs/PDM_2026/MapServer`, consulta
 | `por_subcategoria/Ordenamento` | Um shapefile por subcategoria das plantas P1.1 a P1.3.3; o prefixo é o código da planta |
 | `por_subcategoria/Condicionantes` | Um shapefile por subcategoria das plantas P2.1 (REN), P2.2 e P2.3 |
 | `agregados/` | `PDM_ordenamento.shp`, `PDM_ordenamento_riscos_EEM.shp` e `PDM_condicionantes.shp`, com o campo `CLASSE`, para usar no `gerar_implantacao.py` |
+| `camadas_originais/` | As 28 camadas tal como vieram do servidor (prefixo = n.º da camada), para validar as derivadas |
+| `PIF/` | Perigosidade de incêndio completa: original exata e generalizada |
+| `documentos/` | Regulamento do PDM (Aviso n.º 23477/2026/2) |
 | `dados/original/` | A resposta original do servidor (Esri JSON, comprimida) |
 | `mapas/` | Mapas de verificação |
 | `Matriz_PDM_Abrantes_Amarvento.md` | Regime de cada camada (interdito, condicionado, permitido) com os artigos do RPDM e do RJREN, e o cruzamento com o layout |
