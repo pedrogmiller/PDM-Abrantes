@@ -20,7 +20,7 @@ RJREN confirmado no Anexo II do DL 166/2008 (DR 1.ª série n.º 162, 22/08/2008
 | P1.1 / P2.3 Rede elétrica e servidão | 🟡 | art. 37.º; RSLEAT ⚠ | Distâncias de segurança; parecer do operador (E-Redes/REN) |
 | P2.1 REN (AEREHS, AEIPRA, cursos de água: leitos e margens) | 🟡 | RJREN Anexo II, linha II-f (confirmado); Portaria 419/2012 ⚠ | As três tipologias estão assinaladas como compatíveis com renováveis: admitidas com comunicação prévia à CCDR e nas condições da Portaria 419/2012 |
 | P2.2 RAN | 🟡 | DL 73/2009 ⚠ | Parecer prévio da entidade regional da RAN |
-| P2.2 Sobreiros (povoamento) | 🔴 | art. 28.º; DL 169/2001 ⚠ | Abate em povoamento só com declaração de imprescindível utilidade pública (DIUP) e compensação; árvores isoladas com autorização do ICNF |
+| P2.2 Sobreiros (povoamento) | 🟡 | art. 28.º; DL 169/2001 ⚠ | Abate em povoamento só com declaração de imprescindível utilidade pública (DIUP) e compensação; árvores isoladas com autorização do ICNF |
 | P2.2 Domínio Público Hídrico | 🟡 | Lei 54/2005 ⚠ | Título de utilização dos recursos hídricos (APA) |
 | P2.2 Oliveiras | 🟡 | DL 120/86 ⚠ | Arranque precisa de autorização |
 

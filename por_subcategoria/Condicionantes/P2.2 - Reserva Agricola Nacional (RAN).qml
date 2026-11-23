@@ -5,9 +5,9 @@
    <symbol type="fill" name="0" alpha="1" clip_to_extent="1" force_rhr="0">
     <layer class="SimpleFill" enabled="1" pass="0" locked="0">
       <Option type="Map">
-       <Option name="color" value="254,178,76,140" type="QString"/>
+       <Option name="color" value="240,228,66,140" type="QString"/>
        <Option name="style" value="solid" type="QString"/>
-       <Option name="outline_color" value="152,106,45,255" type="QString"/>
+       <Option name="outline_color" value="144,136,39,255" type="QString"/>
        <Option name="outline_width" value="0.3" type="QString"/>
        <Option name="outline_style" value="solid" type="QString"/>
       </Option>
