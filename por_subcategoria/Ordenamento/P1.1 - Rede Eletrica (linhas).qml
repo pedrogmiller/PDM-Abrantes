@@ -5,7 +5,7 @@
    <symbol type="line" name="0" alpha="1" clip_to_extent="1" force_rhr="0">
     <layer class="SimpleLine" enabled="1" pass="0" locked="0">
       <Option type="Map">
-       <Option name="line_color" value="217,72,1,255" type="QString"/>
+       <Option name="line_color" value="140,109,0,255" type="QString"/>
        <Option name="line_width" value="0.6" type="QString"/>
        <Option name="line_width_unit" value="MM" type="QString"/>
        <Option name="line_style" value="solid" type="QString"/>

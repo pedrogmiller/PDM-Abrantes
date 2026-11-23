@@ -5,16 +5,16 @@
    <symbol type="fill" name="0" alpha="1" clip_to_extent="1" force_rhr="0">
     <layer class="SimpleFill" enabled="1" pass="0" locked="0">
       <Option type="Map">
-       <Option name="color" value="253,174,107,140" type="QString"/>
+       <Option name="color" value="230,194,0,140" type="QString"/>
        <Option name="style" value="solid" type="QString"/>
-       <Option name="outline_color" value="151,104,64,255" type="QString"/>
+       <Option name="outline_color" value="138,116,0,255" type="QString"/>
        <Option name="outline_width" value="0.3" type="QString"/>
        <Option name="outline_style" value="solid" type="QString"/>
       </Option>
     </layer>
     <layer class="SimpleFill" enabled="1" pass="0" locked="0">
       <Option type="Map">
-       <Option name="color" value="151,104,64,255" type="QString"/>
+       <Option name="color" value="138,116,0,255" type="QString"/>
        <Option name="style" value="b_diagonal" type="QString"/>
        <Option name="outline_style" value="no" type="QString"/>
       </Option>
