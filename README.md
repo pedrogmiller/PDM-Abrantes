@@ -35,4 +35,9 @@ Os polígonos são inteiros, não recortados pela área.
 Em `por_subcategoria/` está uma **versão generalizada** (manchas < 500 m² absorvidas pela classe vizinha com maior fronteira comum; 6 781 → 943 polígonos), para visualização. O original exato está em `dados/pif/145_PIF_Abrantes_2025.shp` e é o usado em `cruzamento_layout_PIF.csv`.
 
 ## Cores por regime (`por_subcategoria/`)
-Cada shapefile tem ao lado um `.qml` com o mesmo nome, que o QGIS aplica automaticamente: vermelhos = interdito, laranjas = condicionado (título, parecer ou comunicação prévia), verdes = permitido, cinzentos = informativo. Tons e tramas diferentes distinguem as subcategorias dentro do mesmo regime. Cada camada tem os campos `REGIME` e `BASE` (artigo). Legenda em `mapas/Legenda_regime_por_subcategoria.png`. Quando duas camadas se sobrepõem, vale a mais restritiva.
+Cada shapefile tem ao lado um `.qml` com o mesmo nome, que o QGIS aplica automaticamente: vermelhos = interdito, amarelos = condicionado (pode ser ultrapassado com título, parecer, DIUP ou comunicação prévia), verdes = permitido, cinzentos = informativo. Tons e tramas diferentes distinguem as subcategorias dentro do mesmo regime. Cada camada tem os campos `REGIME` e `BASE` (artigo). Legenda em `mapas/Legenda_regime_por_subcategoria.png`. Quando duas camadas se sobrepõem, vale a mais restritiva.
+
+Sobreiros: condicionado (DIUP, DL 169/2001), mas interdito dentro da Estrutura Ecológica Municipal (RPDM art. 42.º c). Espaço Florestal de Proteção (art. 97.º) e o alcance do art. 42.º b) a infraestruturas são leituras estritas, a confirmar com a Câmara/CCDR.
+
+## Google Earth (`kmz/`)
+O Google Earth ignora os `.qml`. Para ver as cores, abrir `kmz/PDM_Abrantes_regime_Amarvento.kmz`: pastas por regime (Permitido e Informativo desligados por defeito), com regime e artigo no clique de cada polígono. Scripts: `scripts/5_estilos_regime.py` (campos e .qml), `6_gerar_kmz_google_earth.py`, `7_gerar_legenda.py`.
