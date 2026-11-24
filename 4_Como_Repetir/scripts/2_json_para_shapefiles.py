@@ -32,6 +32,17 @@ def geom(g):
 def slug(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
     return re.sub(r'[^A-Za-z0-9]+', '_', s).strip('_')[:50]
+def campo(s):
+    # nomes de campo do shapefile: máx. 10 bytes; sem acentos para o GDAL não cortar um carácter a meio
+    return re.sub(r'[^A-Za-z0-9_]', '_', unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode())[:10]
+def atributos(at):
+    a = {}
+    for kk, vv in at.items():
+        if 'Shape' in kk or 'SHAPE' in kk: continue
+        c, n = campo(kk), 1
+        while c in a: c = campo(kk)[:9 - len(str(n))] + '_' + str(n); n += 1
+        a[c] = vv
+    return a
 for k, v in d['data'].items():
     k = int(k)
     if k in SKIP: continue
@@ -40,8 +51,7 @@ for k, v in d['data'].items():
     for f in v['features']:
         if not f.get('geometry'): continue
         geoms.append(geom(f['geometry']))
-        a = {kk[:10]: vv for kk, vv in f['attributes'].items() if 'Shape' not in kk and 'SHAPE' not in kk}
-        rows.append(a)
+        rows.append(atributos(f['attributes']))
     g = gpd.GeoDataFrame(rows, geometry=geoms, crs=3763)
     g['camada'] = l['name'][:254]
     name = f"{k:03d}_{slug(l['name'])}"
@@ -53,7 +63,7 @@ import glob
 if pif:
   for f in glob.glob(f"{outdir}/089_*")+glob.glob(f"{outdir}/145_*"): os.remove(f)
   P = json.load(open(pif, encoding="utf-8"))
-  rows = [{k[:10]: v for k, v in f['attributes'].items() if 'Shape' not in k and 'SHAPE' not in k} for f in P['features']]
+  rows = [atributos(f['attributes']) for f in P['features']]
   G = gpd.GeoDataFrame(rows, geometry=[poly(f['geometry']['rings']) for f in P['features']], crs=3763)
   G.to_file(f"{outdir}/145_PIF_Abrantes_2025.shp", encoding='utf-8')
   print('145_PIF_Abrantes_2025', len(G), 'completa')
