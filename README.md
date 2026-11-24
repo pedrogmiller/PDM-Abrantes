@@ -4,7 +4,7 @@ Plano Diretor Municipal de Abrantes (PDM 2026) em shapefiles editáveis, com cad
 
 Fonte: MuniSIG de Abrantes, serviço `PMOTs/PDM_2026/MapServer` (polígonos originais da Câmara, não vectorização de imagens). Coordenadas: **EPSG:3763 (PT-TM06/ETRS89)**.
 
-## Como Proceder para qualquer terreno em Abrantes
+## Como proceder para qualquer terreno em Abrantes
 
 Não é preciso programar. Guia com todos os cliques e erros comuns: **[4_Como_Repetir/](4_Como_Repetir/)**.
 
