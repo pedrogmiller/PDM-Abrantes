@@ -21,8 +21,9 @@ Para confirmar que o Python ficou instalado: abre o VS Code > menu **Terminal > 
 4. Abre `scripts/1_extrair_tudo.js` com o Bloco de Notas, seleciona tudo (Ctrl+A) e copia (Ctrl+C).
 5. **Só da primeira vez:** o browser não deixa colar na Console e mostra um aviso a pedir que escrevas `allow pasting` (escreve exatamente a frase que o aviso mostrar). Escreve-a à mão na Console, carrega Enter, e depois cola outra vez.
 6. Cola na Console (Ctrl+V) e carrega Enter.
-7. Aparecem duas janelas, normalmente já preenchidas: o **token** e a **área visível**. Carrega OK nas duas.
-8. Espera pela linha `FEITO` (alguns minutos). O ficheiro `PDM_Abrantes.json` fica nas Transferências.
+7. Se aparecer a vermelho **"Faz agora um pequeno zoom no mapa"**, faz um zoom (roda do rato) no mapa.
+8. Aparecem duas janelas, normalmente já preenchidas: o **token** e a **área visível**. Carrega OK nas duas.
+9. Espera pela linha `FEITO` (alguns minutos). O ficheiro `PDM_Abrantes.json` fica nas Transferências.
 
 **Se a janela do token vier vazia:** separador **Network** do mesmo painel, faz um pequeno zoom no mapa, clica num pedido `export?...` > separador **Payload** > copia o valor de **`token`** e cola-o na janela.
 **Se a janela da área vier vazia** (ou quiseres uma área exata): escreve `xmin,ymin,xmax,ymax` em EPSG:3763. No QGIS tiras isto da extensão dos prédios com um buffer (Propriedades da camada > Informação). Exemplo (Amarvento): `12237,-28202,16397,-25509`.
