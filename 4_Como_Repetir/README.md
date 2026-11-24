@@ -4,19 +4,16 @@ Não é preciso saber programar. São dois passos: um no browser e um duplo cliq
 
 **Uma vez só (preparação):** instala o Python em <https://www.python.org/downloads/>. No instalador, **marca a opção "Add python.exe to PATH"**. Depois descarrega este repositório: botão verde **Code > Download ZIP** e descompacta.
 
-## Antes: a área
-A área é um retângulo em **EPSG:3763 (PT-TM06)**: `xmin, ymin, xmax, ymax`.
-No QGIS: carrega os prédios, junta 200 m de margem (Vetor > Geoprocessamento > Buffer) e vê a extensão em Propriedades da camada > Informação, com o projeto em EPSG:3763.
-Exemplo (Amarvento): `12237,-28202,16397,-25509`.
-
-## Passo 1. No browser (Chrome ou Edge): descarregar o PDM
+## Passo 1. No browser (Chrome ou Edge): localizar o terreno e descarregar o PDM
 1. Abre o visualizador MuniSIG da Câmara de Abrantes e liga qualquer camada do PDM 2026.
-2. Carrega em **F12**. No painel que abre, separador **Network**. Faz um pequeno zoom no mapa.
-3. Na lista aparecem pedidos chamados `export?...` (qualquer um serve). Clica num > separador **Payload** > copia o valor de **`token`**.
-4. Abre `scripts/1_extrair_tudo.js` com o Bloco de Notas, seleciona tudo e copia.
-5. No mesmo painel F12, separador **Console**: cola e carrega Enter. Se o Chrome pedir, escreve primeiro `allow pasting` e Enter.
-6. Aparecem duas janelas: cola o **token** na primeira e a **área** na segunda.
-7. Espera pela linha `FEITO` (alguns minutos). O ficheiro `PDM_Abrantes.json` fica nas Transferências.
+2. **Localiza o terreno a analisar** (pesquisa por morada/freguesia ou navega no mapa) e faz zoom até ele **ocupar o ecrã, com a margem que quiseres à volta** (por exemplo 200 m). O que estiver visível é a área que vai ser descarregada.
+3. Carrega em **F12** e, no painel que abre, vai ao separador **Console**.
+4. Abre `scripts/1_extrair_tudo.js` com o Bloco de Notas, seleciona tudo (Ctrl+A), copia, cola na Console e carrega Enter. Se o Chrome pedir, escreve primeiro `allow pasting` e Enter.
+5. Aparecem duas janelas, normalmente já preenchidas: o **token** e a **área visível**. Carrega OK nas duas.
+6. Espera pela linha `FEITO` (alguns minutos). O ficheiro `PDM_Abrantes.json` fica nas Transferências.
+
+**Se a janela do token vier vazia:** separador **Network** do mesmo painel, faz um pequeno zoom no mapa, clica num pedido `export?...` > separador **Payload** > copia o valor de **`token`** e cola-o na janela.
+**Se a janela da área vier vazia** (ou quiseres uma área exata): escreve `xmin,ymin,xmax,ymax` em EPSG:3763. No QGIS tiras isto da extensão dos prédios com um buffer (Propriedades da camada > Informação). Exemplo (Amarvento): `12237,-28202,16397,-25509`.
 
 ## Passo 2. No computador: duplo clique em `PROCESSAR.bat`
 Abre uma janela para escolheres o `PDM_Abrantes.json`. Depois gera tudo sozinho e abre a pasta `resultado_PDM_Abrantes`, ao lado do ficheiro:
@@ -36,7 +33,7 @@ O terreno novo tem subcategorias que não existiam em Amarvento e que ainda não
 ## Problemas comuns
 | Mensagem | O que fazer |
 |---|---|
-| `Invalid Token` ou `Token expirado` | O token expira. Copia outro (Passo 1, ponto 3) e cola o script de novo |
+| `Invalid Token` ou `Token expirado` | O token expira. Faz zoom no mapa (gera um token novo) e cola o script de novo |
 | "O Windows protegeu o computador" | Clica em **Mais informações > Executar mesmo assim** (aparece por o ficheiro vir da internet) |
 | `Falta o Python` | Instala o Python e marca "Add python.exe to PATH" |
 | Uma camada aparece como `INCOMPLETA` | A área é demasiado grande. Divide-a em duas |

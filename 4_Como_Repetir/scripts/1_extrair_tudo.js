@@ -1,12 +1,21 @@
 // PASSO 1 (único passo no browser).
 // Com o visualizador MuniSIG de Abrantes aberto: F12 > Console > colar este texto todo > Enter.
-// Pergunta o token e a área e descarrega PDM_Abrantes.json com todas as camadas do PDM 2026,
+// Antes: no visualizador, enquadra no ecrã o terreno a analisar (com a margem que quiseres).
+// Pergunta o token e a área (propõe os do último pedido "export" do mapa, ou seja, a vista atual) e descarrega PDM_Abrantes.json com todas as camadas do PDM 2026,
 // incluindo as que têm mais de 2000 polígonos (pedidas por blocos, ex.: perigosidade de incêndio).
 (async()=>{
 const BASE='https://sig.cm-abrantes.pt/arcgis/rest/services/PMOTs/PDM_2026/MapServer';
-const tok=(prompt('1/2  Cola aqui o token\n(Network > pedido "export" > Payload > token)','')||'').trim();
+// tenta ler o token e a vista atual do último pedido "export" que o mapa fez
+let tok0='',area0='';
+try{
+  const u=performance.getEntriesByType('resource').map(r=>r.name).filter(n=>/MapServer\/export\?/.test(n)).pop();
+  if(u){const p=new URL(u).searchParams; tok0=p.get('token')||'';
+    const sr=(p.get('bboxSR')||'')+''; const b=p.get('bbox');
+    if(b && /3763/.test(sr)) area0=b.split(',').map(v=>Math.round(+v)).join(',');}
+}catch(e){}
+const tok=(prompt('1/2  Token'+(tok0?' (já encontrado: carrega OK)':'\n(Network > pedido "export" > Payload > token)'),tok0)||'').trim();
 if(!tok){console.log('Cancelado: falta o token.');return;}
-const ar=(prompt('2/2  Área em EPSG:3763 (PT-TM06): xmin,ymin,xmax,ymax','12237,-28202,16397,-25509')||'').split(/[,;\s]+/).filter(Boolean).map(Number);
+const ar=(prompt('2/2  Área em EPSG:3763 (PT-TM06): xmin,ymin,xmax,ymax'+(area0?'\n(proposta = o que está visível no mapa)':'\nExemplo: 12237,-28202,16397,-25509'),area0)||'').split(/[,;\s]+/).filter(Boolean).map(Number);
 if(ar.length!==4||ar.some(isNaN)||ar[0]>=ar[2]||ar[1]>=ar[3]){console.log('Área inválida. Exemplo: 12237,-28202,16397,-25509');return;}
 const T='&token='+encodeURIComponent(tok);
 const L=await (await fetch(BASE+'/layers?f=json'+T)).json();

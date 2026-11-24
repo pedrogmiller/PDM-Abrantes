@@ -9,7 +9,7 @@ Fonte: MuniSIG de Abrantes, serviço `PMOTs/PDM_2026/MapServer` (polígonos orig
 Não é preciso programar. Guia com todos os cliques e erros comuns: **[4_Como_Repetir/](4_Como_Repetir/)**.
 
 1. **Uma vez só:** instala o [Python](https://www.python.org/downloads/) (marca "Add python.exe to PATH") e descarrega este repositório (**Code > Download ZIP**).
-2. **No browser:** abre o MuniSIG de Abrantes, F12 > Network > copia o `token` de um pedido `export`. Na Console cola `4_Como_Repetir/scripts/1_extrair_tudo.js`: pede o token e a área (EPSG:3763) e descarrega `PDM_Abrantes.json`.
+2. **No browser:** abre o MuniSIG de Abrantes e **localiza o terreno**, enquadrando-o no ecrã com a margem que quiseres. F12 > Console > cola `4_Como_Repetir/scripts/1_extrair_tudo.js`: propõe o token e a área visível, carregas OK e descarrega `PDM_Abrantes.json`.
 3. **No computador:** duplo clique em `4_Como_Repetir/PROCESSAR.bat` e escolhe esse ficheiro. Sai uma pasta com os shapefiles coloridos, o KMZ e a legenda.
 
 ## O que está no repositório
