@@ -18,7 +18,8 @@ Não é preciso programar. Guia com todos os cliques e erros comuns: **[4_Como_R
 |---|---|
 | **`1_Shapefiles/`** | **O resultado principal.** Um shapefile por subcategoria, em `Ordenamento/` e `Condicionantes/`, já com cores (`.qml`, o QGIS aplica sozinho) e campos `REGIME` e `BASE` (artigo). |
 | `2_Google_Earth/` | O mesmo num KMZ com cores, organizado por regime (o Google Earth ignora os `.qml`). |
-| `3_Legenda_e_Regras/` | Legenda, matriz de regime com os artigos e os regulamentos usados: Regulamento do PDM de Abrantes (Aviso 23477/2026), RJREN consolidado e o DL 166/2008 original (onde está a tabela do Anexo II), mais a imagem da linha das renováveis dessa tabela. |
+| `3_Legenda_e_Regras/` | Legenda, matriz de regime com os artigos e a imagem da linha das renováveis da tabela do RJREN. |
+| `Bibliografia/` | Os regulamentos usados, em PDF: Regulamento do PDM de Abrantes (Aviso 23477/2026), RJREN consolidado e DL 166/2008 original (onde está a tabela do Anexo II). |
 | `4_Como_Repetir/` | Guia passo a passo e scripts. |
 | `_tecnico/` | Para validar ou refazer: camadas tal como vieram do servidor, JSON originais, PIF generalizada e agregados para o `gerar_implantacao.py`. |
 
