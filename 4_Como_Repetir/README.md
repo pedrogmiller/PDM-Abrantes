@@ -5,7 +5,7 @@ Não é preciso saber programar. Depois da preparação, são dois passos: um no
 ## Preparação (uma vez só)
 Num computador da empresa normalmente não se pode instalar programas "a cru". Usa o que a empresa disponibiliza:
 
-1. **Python**, por uma destas vias (sem precisar de administrador):
+1. **Python 3.12** (obrigatório; o VS Code sozinho **não** traz Python e sem ele o *Select Interpreter* fica vazio), por uma destas vias (sem precisar de administrador):
    - **Microsoft Store:** procura "Python 3.12" (editor: Python Software Foundation) > Obter; ou
    - **Company Portal / Microsoft Store > Visual Studio Code.** Abre o VS Code > ícone dos quadrados à esquerda (Extensions) > instala **Python** (da Microsoft). Se o Python ainda não existir, o VS Code avisa e abre a Microsoft Store para o instalar.
 2. **Este repositório:** botão verde **Code > Download ZIP** e descompacta numa pasta tua (por exemplo Documentos).
