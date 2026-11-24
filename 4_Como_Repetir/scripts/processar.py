@@ -15,9 +15,15 @@ def fim(msg=''):
 try:
     import geopandas, matplotlib  # noqa: F401
 except ImportError:
-    fim('Faltam bibliotecas. No terminal do VS Code (Terminal > New Terminal) escreve:\n'
-        '    python -m pip install geopandas matplotlib\n'
-        'e corre outra vez.')
+    import subprocess
+    print('A instalar as bibliotecas que faltam (geopandas, matplotlib). Só acontece da primeira vez, pode demorar uns minutos...')
+    r = subprocess.call([sys.executable, '-m', 'pip', 'install', '--user', 'geopandas', 'matplotlib'])
+    if r != 0:
+        fim('Não consegui instalar as bibliotecas. No terminal do VS Code escreve:\n'
+            f'    & "{sys.executable}" -m pip install geopandas matplotlib\n'
+            'e corre outra vez.')
+    import site, importlib; importlib.reload(site); importlib.invalidate_caches()
+    sys.path.insert(0, site.getusersitepackages())
 
 def procurar_json():
     pastas = [AQUI, os.path.dirname(AQUI), os.path.join(os.path.expanduser('~'), 'Downloads'),
