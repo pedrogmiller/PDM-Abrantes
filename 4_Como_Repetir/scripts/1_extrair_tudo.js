@@ -21,14 +21,14 @@ let ex=null; try{ex=lerExport();}catch(e){}
 if(!ex||!ex.tok){
   // o browser só guarda os primeiros pedidos: limpa a lista e espera por um pedido novo
   try{performance.setResourceTimingBufferSize(5000);performance.clearResourceTimings();}catch(e){}
-  console.log('%cFaz agora um pequeno zoom no mapa (tens 60 segundos)...','font-size:16px;color:#c00;font-weight:bold');
+  console.log('%cCom o cursor do rato, mexe ligeiramente o mapa para que ele volte a carregar o PDM (tens 60 segundos; depois o script continua sozinho).\nDe seguida vão surgir 2 pop-ups para preencheres com o token e o bbox, que estão no separador Network (pedido "export" > Payload).','font-size:15px;color:#c00;font-weight:bold');
   for(let i=0;i<120&&!(ex&&ex.tok);i++){await new Promise(r=>setTimeout(r,500));try{ex=lerExport();}catch(e){}}
 }
 const tok0=ex?ex.tok:'', area0=ex?ex.area:'';
 if(tok0) console.log('Token e área lidos do mapa.');
-const tok=(prompt('1/2  Token'+(tok0?' (já encontrado: carrega OK)':'\n(Network > pedido "export" > Payload > token)'),tok0)||'').trim();
+const tok=(prompt('1/2  Token'+(tok0?' (já encontrado: carrega OK)':'\nNetwork > filtra "export" > clica num pedido > Payload > token > clique direito > Copy value'),tok0)||'').trim();
 if(!tok){console.log('Cancelado: falta o token.');return;}
-const ar=(prompt('2/2  Área em EPSG:3763 (PT-TM06): xmin,ymin,xmax,ymax'+(area0?'\n(proposta = o que está visível no mapa)':'\nExemplo: 12237,-28202,16397,-25509'),area0)||'').split(/[,;\s]+/).filter(Boolean).map(Number);
+const ar=(prompt('2/2  Área (bbox) em EPSG:3763: xmin,ymin,xmax,ymax'+(area0?'\n(proposta = o que está visível no mapa)':'\nNo mesmo pedido "export" > Payload > bbox > Copy value (confirma bboxSR = 3763)\nAmarvento: 12237,-28202,16397,-25509'),area0)||'').split(/[,;\s]+/).filter(Boolean).map(Number);
 if(ar.length!==4||ar.some(isNaN)||ar[0]>=ar[2]||ar[1]>=ar[3]){console.log('Área inválida. Exemplo: 12237,-28202,16397,-25509');return;}
 const T='&token='+encodeURIComponent(tok);
 const L=await (await fetch(BASE+'/layers?f=json'+T)).json();
