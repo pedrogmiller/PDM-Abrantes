@@ -4,6 +4,8 @@
 # em 4_Como_Repetir ou nas Transferências; se não houver nenhum, abre uma janela para o escolher.
 import os, sys, glob, runpy, subprocess, warnings, traceback
 warnings.filterwarnings('ignore')
+try: sys.stdout.reconfigure(errors='replace'); sys.stderr.reconfigure(errors='replace')
+except Exception: pass
 AQUI = os.path.dirname(os.path.abspath(__file__))
 
 def fim(msg=''):
