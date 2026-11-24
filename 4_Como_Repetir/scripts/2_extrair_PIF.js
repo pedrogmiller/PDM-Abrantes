@@ -1,6 +1,10 @@
-// Para camadas com mais de 2000 polígonos (ex.: PIF, camada 145): divide a área em quadrantes até caber.
+// PASSO 2. A perigosidade de incêndio (camada 145) tem mais de 2000 polígonos: este script pede-a por blocos. Descarrega PIF_Abrantes.json.
+// ===== EDITAR ESTAS DUAS LINHAS =====
+const TOKEN='COLA_AQUI';                       // DevTools > Network > pedido "export" > Payload > token
+const AREA=[12237,-28202,16397,-25509];        // xmin,ymin,xmax,ymax em EPSG:3763 (PT-TM06)
+// =====================================
 (async()=>{
-const tok='COLA_AQUI';
+const tok=TOKEN;
 const base='https://sig.cm-abrantes.pt/arcgis/rest/services/PMOTs/PDM_2026/MapServer/145/query';
 const feats={}; let n=0;
 async function get(x0,y0,x1,y1,d){
@@ -12,8 +16,8 @@ async function get(x0,y0,x1,y1,d){
  for(const f of r.features) feats[f.attributes.OBJECTID]=f; n++;
  console.log('bloco',n,'total',Object.keys(feats).length);
 }
-await get(12237,-28202,16397,-25509,0);
+await get(...AREA,0);
 const out={layer:145,features:Object.values(feats)};
-const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(out)],{type:'application/json'}));a.download='PIF_Abrantes_Amarvento.json';a.click();
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(out)],{type:'application/json'}));a.download='PIF_Abrantes.json';a.click();
 console.log('FEITO',out.features.length);
 })();
