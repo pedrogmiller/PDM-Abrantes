@@ -8,9 +8,9 @@ Fonte: MuniSIG de Abrantes, serviço `PMOTs/PDM_2026/MapServer` (polígonos orig
 
 Não é preciso programar. Guia com todos os cliques e erros comuns: **[4_Como_Repetir/](4_Como_Repetir/)**.
 
-1. **Uma vez só:** instala o **VS Code** do Company Portal ou pela **Microsoft Store** e d~faz download deste repositório (**Code > Download ZIP**).
-2. **No browser:** abre o MuniSIG de Abrantes, **liga o PDM 2026** (desliga o ortofotomapa) e **localiza o terreno**, enquadrando-o no ecrã com a margem que quiseres. F12 > Console > cola `4_Como_Repetir/scripts/1_extrair_tudo.js` (da primeira vez o browser pede que escrevas `allow pasting`): propõe o token e a área visível, carregas OK e descarrega `PDM_Abrantes.json`.
-3. **No computador:** duplo clique em `4_Como_Repetir/PROCESSAR.bat` (ou corre `scripts/processar.py` no VS Code) e escolhe esse ficheiro. Sai uma pasta com os shapefiles coloridos, o KMZ e a legenda.
+1. **Uma vez só:** instala o **VS Code** **e** o **Python 3.12** (os dois, pelo Company Portal ou pela Microsoft Store; o VS Code não traz Python) e faz download deste repositório (**Code > Download ZIP**). No terminal do VS Code, `python --version` deve responder `Python 3.12`.
+2. **No browser:** abre o MuniSIG de Abrantes, **liga o PDM 2026** (desliga o ortofotomapa) e **localiza o terreno**, enquadrando-o no ecrã com a margem que quiseres. F12 > Console > cola `4_Como_Repetir/scripts/1_extrair_tudo.js` (da primeira vez o browser pede que escrevas `allow pasting`), mexe ligeiramente o mapa e preenche o token e o bbox (separador Network > pedido `export` > Payload). No fim descarrega `PDM_Abrantes.json`.
+3. **No computador:** põe o `PDM_Abrantes.json` na pasta `4_Como_Repetir/scripts/` e faz duplo clique em `4_Como_Repetir/PROCESSAR.bat` (ou, no VS Code, `python scripts/processar.py`). Sai uma pasta com os shapefiles coloridos, o KMZ e a legenda.
 
 ## O que está no repositório
 
