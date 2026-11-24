@@ -1,8 +1,8 @@
-# Tabela de regime de cada subcategoria (RPDM Abrantes 2026 + RJREN), usada pelos passos 6, 7 e 8.
+# Tabela de regime de cada subcategoria (RPDM Abrantes 2026 + RJREN), usada pelos passos 5, 6 e 7.
 # Chave: "Pasta/nome do shapefile sem .shp" em 1_Shapefiles.
 # Valor: (regime, base legal, cor hex, padrão)   regime: Interdito | Condicionado | Permitido | Informativo
 #        padrão: solid | hatch (diagonal) | cross | dots | line | point
-# Se o passo 6 disser "em falta", acrescenta aqui essas camadas.
+# Se o passo 5 disser "em falta", acrescenta aqui essas camadas.
 M={
 # ---------- INTERDITO (vermelhos) ----------
 'Ordenamento/P1.1 - Espaco florestal de protecao':('Interdito','RPDM art. 97.º (só infraestruturas públicas; confirmar com a CM)','#b2182b','solid'),

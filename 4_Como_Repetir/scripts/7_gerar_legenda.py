@@ -1,5 +1,5 @@
-# PASSO 8. Legenda PNG a partir de regimes.py.
-# Uso: python 8_gerar_legenda.py <saida.png>
+# PASSO 7. Legenda PNG a partir de regimes.py.
+# Uso: python 7_gerar_legenda.py <saida.png>
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 import os, sys

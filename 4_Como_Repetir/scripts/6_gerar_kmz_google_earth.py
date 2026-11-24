@@ -1,6 +1,6 @@
 import geopandas as g, os, zipfile, html, sys
-# PASSO 7. KMZ para o Google Earth com as mesmas cores (o Google Earth ignora os .qml).
-# Uso: python 7_gerar_kmz_google_earth.py <pasta 1_Shapefiles> <saida.kmz>
+# PASSO 6. KMZ para o Google Earth com as mesmas cores (o Google Earth ignora os .qml).
+# Uso: python 6_gerar_kmz_google_earth.py <pasta 1_Shapefiles> <saida.kmz>
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from regimes import M
 R=sys.argv[1]
@@ -34,6 +34,6 @@ for reg in sorted(folders,key=order.get):
         if sub: out.append(f'<Folder><name>{grp}</name>'+''.join(sub)+'</Folder>')
     out.append('</Folder>')
 out.append('</Document></kml>')
-p=sys.argv[2]
+p=sys.argv[2]; os.makedirs(os.path.dirname(os.path.abspath(p)), exist_ok=True)
 with zipfile.ZipFile(p,'w',zipfile.ZIP_DEFLATED) as z: z.writestr('doc.kml',''.join(out))
 print(os.path.getsize(p)//1024,'KB')

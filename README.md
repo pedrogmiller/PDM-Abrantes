@@ -6,21 +6,11 @@ Fonte: MuniSIG de Abrantes, serviço `PMOTs/PDM_2026/MapServer` (polígonos orig
 
 ## Como repetir para outro terreno de Abrantes
 
-Guia completo, com os erros mais comuns: **[4_Como_Repetir/](4_Como_Repetir/)**. Resumo:
+Não é preciso programar. Guia com todos os cliques e erros comuns: **[4_Como_Repetir/](4_Como_Repetir/)**.
 
-1. Abre o visualizador MuniSIG de Abrantes no Chrome, liga uma camada do PDM e abre o DevTools (F12) > **Network**. Filtra por `export` e copia o `token` do separador **Payload**.
-2. Em `4_Como_Repetir/scripts/1_extrair_PDM.js` muda as duas linhas do topo: `TOKEN` e `AREA` (xmin, ymin, xmax, ymax em EPSG:3763). Cola o script na **Console** e carrega Enter. Descarrega `PDM_Abrantes.json`.
-3. Faz o mesmo com `2_extrair_PIF.js` (perigosidade de incêndio, pedida por blocos). Descarrega `PIF_Abrantes.json`.
-4. No computador, com Python e `geopandas` instalados, na pasta `4_Como_Repetir/scripts`:
-   ```
-   python 3_json_para_shapefiles.py PDM_Abrantes.json PIF_Abrantes.json saida/camadas_originais
-   python 4_separar_por_subcategoria.py PDM_Abrantes.json saida/camadas_originais saida/1_Shapefiles
-   python 5_generalizar_PIF.py saida/camadas_originais saida/1_Shapefiles
-   python 6_aplicar_cores.py saida/1_Shapefiles
-   python 7_gerar_kmz_google_earth.py saida/1_Shapefiles saida/PDM_regime.kmz
-   python 8_gerar_legenda.py saida/Legenda_regime.png
-   ```
-5. Se o passo 6 disser `em falta [...]`, o terreno novo tem subcategorias que ainda não estão classificadas: acrescenta-as em `scripts/regimes.py` (regime, artigo, cor) e corre de novo os passos 6 a 8.
+1. **Uma vez só:** instala o [Python](https://www.python.org/downloads/) (marca "Add python.exe to PATH") e descarrega este repositório (**Code > Download ZIP**).
+2. **No browser:** abre o MuniSIG de Abrantes e **localiza o terreno**, enquadrando-o no ecrã com a margem que quiseres. F12 > Console > cola `4_Como_Repetir/scripts/1_extrair_tudo.js`: propõe o token e a área visível, carregas OK e descarrega `PDM_Abrantes.json`.
+3. **No computador:** duplo clique em `4_Como_Repetir/PROCESSAR.bat` e escolhe esse ficheiro. Sai uma pasta com os shapefiles coloridos, o KMZ e a legenda.
 
 ## O que está no repositório
 
