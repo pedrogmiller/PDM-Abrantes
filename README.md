@@ -15,8 +15,7 @@ Fonte: MuniSIG de Abrantes, serviço ArcGIS `PMOTs/PDM_2026/MapServer`, consulta
 | `documentos/` | Regulamento do PDM (Aviso n.º 23477/2026/2) |
 | `dados/original/` | A resposta original do servidor (Esri JSON, comprimida) |
 | `mapas/` | Mapas de verificação |
-| `Matriz_PDM_Abrantes_Amarvento.md` | Regime de cada camada (interdito, condicionado, permitido) com os artigos do RPDM e do RJREN, e o cruzamento com o layout |
-| `cruzamento_*.csv` | m² afetados por camada e por turbina |
+| `Matriz_PDM_Abrantes_Amarvento.md` | Regime de cada camada (interdito, condicionado, permitido) com os artigos do RPDM e do RJREN |
 | `scripts/` | Como foi extraído e convertido |
 
 Os polígonos são inteiros, não recortados pela área.
@@ -32,7 +31,7 @@ Os polígonos são inteiros, não recortados pela área.
 - Fora do PDM (por exemplo Rede Natura e servidões aeronáuticas) não está incluído.
 
 ## Perigosidade de incêndio
-Em `por_subcategoria/` está uma **versão generalizada** (manchas < 500 m² absorvidas pela classe vizinha com maior fronteira comum; 6 781 → 943 polígonos), para visualização. O original exato está em `dados/pif/145_PIF_Abrantes_2025.shp` e é o usado em `cruzamento_layout_PIF.csv`.
+Em `por_subcategoria/` está uma **versão generalizada** (manchas < 500 m² absorvidas pela classe vizinha com maior fronteira comum; 6 781 → 943 polígonos), para visualização. O original exato está em `dados/pif/145_PIF_Abrantes_2025.shp`.
 
 ## Cores por regime (`por_subcategoria/`)
 Cada shapefile tem ao lado um `.qml` com o mesmo nome, que o QGIS aplica automaticamente: vermelhos = interdito, amarelos = condicionado (pode ser ultrapassado com título, parecer, DIUP ou comunicação prévia), verdes = permitido, cinzentos = informativo. Tons e tramas diferentes distinguem as subcategorias dentro do mesmo regime. Cada camada tem os campos `REGIME` e `BASE` (artigo). Legenda em `mapas/Legenda_regime_por_subcategoria.png`. Quando duas camadas se sobrepõem, vale a mais restritiva.
