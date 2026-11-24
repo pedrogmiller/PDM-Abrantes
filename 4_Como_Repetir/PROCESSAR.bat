@@ -15,5 +15,3 @@ if not defined PY (
 echo A preparar (so demora na primeira vez)...
 %PY% -m pip install --quiet --disable-pip-version-check geopandas matplotlib
 %PY% scripts\processar.py %1
-echo.
-pause
