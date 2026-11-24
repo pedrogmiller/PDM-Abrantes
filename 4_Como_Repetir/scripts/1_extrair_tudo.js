@@ -1,6 +1,7 @@
 // PASSO 1 (único passo no browser).
 // Com o visualizador MuniSIG de Abrantes aberto: F12 > Console > colar este texto todo > Enter.
-// Antes: no visualizador, enquadra no ecrã o terreno a analisar (com a margem que quiseres).
+// Antes: no visualizador, liga o PDM 2026 e enquadra no ecrã o terreno a analisar (com a margem que quiseres).
+// Descarrega SEMPRE todas as camadas do PDM 2026, estejam ligadas ou não no visualizador.
 // Pergunta o token e a área (propõe os do último pedido "export" do mapa, ou seja, a vista atual) e descarrega PDM_Abrantes.json com todas as camadas do PDM 2026,
 // incluindo as que têm mais de 2000 polígonos (pedidas por blocos, ex.: perigosidade de incêndio).
 (async()=>{
@@ -8,7 +9,7 @@ const BASE='https://sig.cm-abrantes.pt/arcgis/rest/services/PMOTs/PDM_2026/MapSe
 // tenta ler o token e a vista atual do último pedido "export" que o mapa fez
 let tok0='',area0='';
 try{
-  const u=performance.getEntriesByType('resource').map(r=>r.name).filter(n=>/MapServer\/export\?/.test(n)).pop();
+  const u=performance.getEntriesByType('resource').map(r=>r.name).filter(n=>/PDM_2026\/MapServer\/export\?/.test(n)).pop();
   if(u){const p=new URL(u).searchParams; tok0=p.get('token')||'';
     const sr=(p.get('bboxSR')||'')+''; const b=p.get('bbox');
     if(b && /3763/.test(sr)) area0=b.split(',').map(v=>Math.round(+v)).join(',');}
