@@ -1,7 +1,6 @@
 # Matriz de condicionamento PDM Abrantes (2026) – Amarvento
 
 Fonte: Regulamento do PDM, Aviso n.º 23477/2026/2 (DR n.º 185, 2.ª série, 23/09/2026), e legislação das servidões.
-Layout cruzado: V163 HH113 (plataformas de `SIG_Implantacao`) + acessos do KMZ licenciado (24.08.13).
 Legenda: 🟢 permitido · 🟡 condicionado (parecer, estudo ou compensação) · 🔴 interdito ou de risco alto.
 RJREN confirmado no Anexo II do DL 166/2008 (DR 1.ª série n.º 162, 22/08/2008, p. 5881). Os itens marcados com ⚠ vêm da legislação geral, citada de memória: confirmar antes de usar num processo.
 
@@ -23,4 +22,3 @@ RJREN confirmado no Anexo II do DL 166/2008 (DR 1.ª série n.º 162, 22/08/2008
 | P2.2 Sobreiros (povoamento) | 🟡 | art. 28.º; DL 169/2001 ⚠ | Abate em povoamento só com declaração de imprescindível utilidade pública (DIUP) e compensação; árvores isoladas com autorização do ICNF |
 | P2.2 Domínio Público Hídrico | 🟡 | Lei 54/2005 ⚠ | Título de utilização dos recursos hídricos (APA) |
 | P2.2 Oliveiras | 🟡 | DL 120/86 ⚠ | Arranque precisa de autorização |
-
