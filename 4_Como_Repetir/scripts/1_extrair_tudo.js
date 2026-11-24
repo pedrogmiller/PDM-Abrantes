@@ -6,14 +6,26 @@
 // incluindo as que têm mais de 2000 polígonos (pedidas por blocos, ex.: perigosidade de incêndio).
 (async()=>{
 const BASE='https://sig.cm-abrantes.pt/arcgis/rest/services/PMOTs/PDM_2026/MapServer';
-// tenta ler o token e a vista atual do último pedido "export" que o mapa fez
-let tok0='',area0='';
-try{
-  const u=performance.getEntriesByType('resource').map(r=>r.name).filter(n=>/PDM_2026\/MapServer\/export\?/.test(n)).pop();
-  if(u){const p=new URL(u).searchParams; tok0=p.get('token')||'';
-    const sr=(p.get('bboxSR')||'')+''; const b=p.get('bbox');
-    if(b && /3763/.test(sr)) area0=b.split(',').map(v=>Math.round(+v)).join(',');}
-}catch(e){}
+// tenta ler o token e a vista atual do último pedido "export" do PDM 2026 que o mapa fez
+const lerExport=()=>{
+  const u=performance.getEntriesByType('resource').map(r=>r.name)
+    .filter(n=>{try{return /PDM_2026[^?]*\/export/i.test(decodeURIComponent(n))}catch(e){return false}}).pop();
+  if(!u) return null;
+  const i=u.search(/https?(:|%3A)(\/|%2F){2}[^?]*PDM_2026/i);        // endereço por trás de um proxy, se houver
+  const inner=i>0?u.slice(i):u;
+  const p=new URL(/^https?%3A/i.test(inner)?decodeURIComponent(inner):inner).searchParams;
+  const sr=(p.get('bboxSR')||'')+''; const b=p.get('bbox');
+  return {tok:p.get('token')||'', area:(b&&/3763/.test(sr))?b.split(',').map(v=>Math.round(+v)).join(','):''};
+};
+let ex=null; try{ex=lerExport();}catch(e){}
+if(!ex||!ex.tok){
+  // o browser só guarda os primeiros pedidos: limpa a lista e espera por um pedido novo
+  try{performance.setResourceTimingBufferSize(5000);performance.clearResourceTimings();}catch(e){}
+  console.log('%cFaz agora um pequeno zoom no mapa (tens 60 segundos)...','font-size:16px;color:#c00;font-weight:bold');
+  for(let i=0;i<120&&!(ex&&ex.tok);i++){await new Promise(r=>setTimeout(r,500));try{ex=lerExport();}catch(e){}}
+}
+const tok0=ex?ex.tok:'', area0=ex?ex.area:'';
+if(tok0) console.log('Token e área lidos do mapa.');
 const tok=(prompt('1/2  Token'+(tok0?' (já encontrado: carrega OK)':'\n(Network > pedido "export" > Payload > token)'),tok0)||'').trim();
 if(!tok){console.log('Cancelado: falta o token.');return;}
 const ar=(prompt('2/2  Área em EPSG:3763 (PT-TM06): xmin,ymin,xmax,ymax'+(area0?'\n(proposta = o que está visível no mapa)':'\nExemplo: 12237,-28202,16397,-25509'),area0)||'').split(/[,;\s]+/).filter(Boolean).map(Number);
