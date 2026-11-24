@@ -1,8 +1,16 @@
 # Como repetir para outro terreno de Abrantes
 
-Não é preciso saber programar. São dois passos: um no browser e um duplo clique.
+Não é preciso saber programar. Depois da preparação, são dois passos: um no browser e outro no computador.
 
-**Uma vez só (preparação):** instala o Python em <https://www.python.org/downloads/>. No instalador, **marca a opção "Add python.exe to PATH"**. Depois descarrega este repositório: botão verde **Code > Download ZIP** e descompacta.
+## Preparação (uma vez só)
+Num computador da empresa normalmente não se pode instalar programas "a cru". Usa o que a empresa disponibiliza:
+
+1. **Python**, por uma destas vias (sem precisar de administrador):
+   - **Microsoft Store:** procura "Python 3.12" (editor: Python Software Foundation) > Obter; ou
+   - **Company Portal / Microsoft Store > Visual Studio Code.** Abre o VS Code > ícone dos quadrados à esquerda (Extensions) > instala **Python** (da Microsoft). Se o Python ainda não existir, o VS Code avisa e abre a Microsoft Store para o instalar.
+2. **Este repositório:** botão verde **Code > Download ZIP** e descompacta numa pasta tua (por exemplo Documentos).
+
+Para confirmar que o Python ficou instalado: abre o VS Code > menu **Terminal > New Terminal**, escreve `python --version` e Enter. Deve aparecer `Python 3.x`.
 
 ## Passo 1. No browser (Chrome ou Edge): localizar o terreno e descarregar o PDM
 1. Abre o visualizador MuniSIG da Câmara de Abrantes e liga qualquer camada do PDM 2026.
@@ -15,8 +23,15 @@ Não é preciso saber programar. São dois passos: um no browser e um duplo cliq
 **Se a janela do token vier vazia:** separador **Network** do mesmo painel, faz um pequeno zoom no mapa, clica num pedido `export?...` > separador **Payload** > copia o valor de **`token`** e cola-o na janela.
 **Se a janela da área vier vazia** (ou quiseres uma área exata): escreve `xmin,ymin,xmax,ymax` em EPSG:3763. No QGIS tiras isto da extensão dos prédios com um buffer (Propriedades da camada > Informação). Exemplo (Amarvento): `12237,-28202,16397,-25509`.
 
-## Passo 2. No computador: duplo clique em `PROCESSAR.bat`
-Abre uma janela para escolheres o `PDM_Abrantes.json`. Depois gera tudo sozinho e abre a pasta `resultado_PDM_Abrantes`, ao lado do ficheiro:
+## Passo 2. No computador: gerar os shapefiles
+**Opção A, duplo clique:** abre a pasta `4_Como_Repetir` e faz duplo clique em `PROCESSAR.bat`.
+
+**Opção B, pelo VS Code** (se o `.bat` estiver bloqueado):
+1. VS Code > **File > Open Folder** > escolhe a pasta `4_Como_Repetir`.
+2. Só da primeira vez: **Terminal > New Terminal**, escreve `python -m pip install geopandas matplotlib` e Enter. Espera que acabe.
+3. Abre `scripts/processar.py` e carrega no **▶** (canto superior direito).
+
+Nas duas opções abre-se uma janela para escolheres o `PDM_Abrantes.json`. Depois gera tudo sozinho e abre a pasta `resultado_PDM_Abrantes`, ao lado do ficheiro:
 
 | Pasta / ficheiro | O que é |
 |---|---|
@@ -28,14 +43,15 @@ Abre uma janela para escolheres o `PDM_Abrantes.json`. Depois gera tudo sozinho 
 A primeira vez demora mais (instala o que precisa). No Mac usa `PROCESSAR.command`.
 
 ## Se aparecer `em falta [...]`
-O terreno novo tem subcategorias que não existiam em Amarvento e que ainda não têm regime (interdito, condicionado, permitido). Ficam sem cor. Abre `scripts/regimes.py` com o Bloco de Notas, copia uma linha parecida, muda o nome, o regime, o artigo e a cor (confirma o regime no Regulamento, em `Bibliografia/`) e corre o `PROCESSAR.bat` de novo.
+O terreno novo tem subcategorias que não existiam em Amarvento e que ainda não têm regime (interdito, condicionado, permitido). Ficam sem cor. Abre `scripts/regimes.py` com o Bloco de Notas, copia uma linha parecida, muda o nome, o regime, o artigo e a cor (confirma o regime no Regulamento, em `Bibliografia/`) e corre o Passo 2 de novo.
 
 ## Problemas comuns
 | Mensagem | O que fazer |
 |---|---|
 | `Invalid Token` ou `Token expirado` | O token expira. Faz zoom no mapa (gera um token novo) e cola o script de novo |
 | "O Windows protegeu o computador" | Clica em **Mais informações > Executar mesmo assim** (aparece por o ficheiro vir da internet) |
-| `Falta o Python` | Instala o Python e marca "Add python.exe to PATH" |
+| `Falta o Python` | Instala o Python pela Microsoft Store ou pelo VS Code (ver Preparação) |
+| `pip` falha ou demora muito (rede da empresa) | Pede à IT que libere `pypi.org` ou que instale `geopandas` e `matplotlib` |
 | Uma camada aparece como `INCOMPLETA` | A área é demasiado grande. Divide-a em duas |
 | Cores aleatórias no Google Earth | Usa o KMZ, não os shapefiles |
 

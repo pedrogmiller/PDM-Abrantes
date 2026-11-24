@@ -7,8 +7,8 @@ where py >nul 2>nul && set PY=py
 if not defined PY (where python >nul 2>nul && set PY=python)
 if not defined PY (
   echo.
-  echo Falta o Python. Instala em https://www.python.org/downloads/
-  echo e marca a opcao "Add python.exe to PATH". Depois volta a abrir este ficheiro.
+  echo Falta o Python. Instala-o pela Microsoft Store ("Python 3.12")
+  echo ou pelo VS Code (extensao Python). Depois volta a abrir este ficheiro.
   pause
   exit /b
 )
