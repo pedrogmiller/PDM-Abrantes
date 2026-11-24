@@ -1,7 +1,7 @@
-# PASSO 5. Perigosidade de incêndio: a original tem milhares de manchas minúsculas.
+# PASSO 4. Perigosidade de incêndio: a original tem milhares de manchas minúsculas.
 # Para visualização, as manchas < MIN m² passam para a classe vizinha com maior fronteira comum.
 # O original exato fica em camadas_originais/145_PIF_Abrantes_2025.shp (usar esse para medir áreas).
-# Uso: python 5_generalizar_PIF.py <pasta camadas_originais> <pasta 1_Shapefiles> [MIN m², por defeito 500]
+# Uso: python 4_generalizar_PIF.py <pasta camadas_originais> <pasta 1_Shapefiles> [MIN m², por defeito 500]
 import sys, os, geopandas as g
 S, O = sys.argv[1], sys.argv[2]; MIN = float(sys.argv[3]) if len(sys.argv) > 3 else 500
 G = g.read_file(f'{S}/145_PIF_Abrantes_2025.shp')[['Perigosida','gridcode','geometry']]; G['geometry'] = G.buffer(0)

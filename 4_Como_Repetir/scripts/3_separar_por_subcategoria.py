@@ -1,7 +1,7 @@
 import json, glob, os, re, unicodedata, shutil
 import geopandas as g
-# PASSO 4. Um shapefile por subcategoria, em Ordenamento/ e Condicionantes/, com nomes sem acentos.
-# Uso: python 4_separar_por_subcategoria.py PDM_Abrantes.json <pasta camadas_originais> <pasta 1_Shapefiles>
+# PASSO 3. Um shapefile por subcategoria, em Ordenamento/ e Condicionantes/, com nomes sem acentos.
+# Uso: python 3_separar_por_subcategoria.py PDM_Abrantes.json <pasta camadas_originais> <pasta 1_Shapefiles>
 import sys
 J, S, O = sys.argv[1], sys.argv[2], sys.argv[3]
 shutil.rmtree(O, ignore_errors=True)
