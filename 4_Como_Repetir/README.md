@@ -28,7 +28,7 @@ Abre uma janela para escolheres o `PDM_Abrantes.json`. Depois gera tudo sozinho 
 A primeira vez demora mais (instala o que precisa). No Mac usa `PROCESSAR.command`.
 
 ## Se aparecer `em falta [...]`
-O terreno novo tem subcategorias que não existiam em Amarvento e que ainda não têm regime (interdito, condicionado, permitido). Ficam sem cor. Abre `scripts/regimes.py` com o Bloco de Notas, copia uma linha parecida, muda o nome, o regime, o artigo e a cor (confirma o regime no Regulamento, em `3_Legenda_e_Regras/`) e corre o `PROCESSAR.bat` de novo.
+O terreno novo tem subcategorias que não existiam em Amarvento e que ainda não têm regime (interdito, condicionado, permitido). Ficam sem cor. Abre `scripts/regimes.py` com o Bloco de Notas, copia uma linha parecida, muda o nome, o regime, o artigo e a cor (confirma o regime no Regulamento, em `Bibliografia/`) e corre o `PROCESSAR.bat` de novo.
 
 ## Problemas comuns
 | Mensagem | O que fazer |
