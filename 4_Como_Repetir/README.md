@@ -36,7 +36,7 @@ Para confirmar que o Python ficou instalado: abre o VS Code > menu **Terminal > 
 2. Só da primeira vez:
    - **Restricted Mode:** na barra em cima clica em **Restricted Mode > Trust** (ou "Yes, I trust the authors"). Sem isto o VS Code não corre nada.
    - **Python interpreter:** Ctrl+Shift+P > escreve `Python: Select Interpreter` > escolhe o **Python 3.12**. Se a lista só mostrar *Enter Interpreter Path* / *Browse*, o Python não está instalado: fecha o VS Code, instala **Python 3.12** pela Microsoft Store ou Company Portal, volta a abrir o VS Code e repete. (Para confirmar, no terminal do VS Code escreve `python --version`: se abrir a Store ou der erro, falta instalar.)
-   - **Terminal > New Terminal**, escreve `python -m pip install geopandas matplotlib` e Enter. Espera que acabe.
+   - As bibliotecas (geopandas, matplotlib) instalam-se sozinhas da primeira vez que corres o script, o que pode demorar uns minutos. Se falhar, em **Terminal > New Terminal** escreve `python -m pip install geopandas matplotlib`.
 3. No terminal escreve `python scripts/processar.py` e Enter (ou abre `scripts/processar.py` e carrega no **▶**).
 
 O script procura o `PDM_Abrantes.json` mais recente na pasta `scripts`, em `4_Como_Repetir` e nas Transferências (se quiseres ter a certeza, copia-o para `scripts`). Se não o encontrar, abre uma janela para o escolheres. Depois gera tudo sozinho e abre a pasta `resultado_PDM_Abrantes`, ao lado do ficheiro:
@@ -60,6 +60,7 @@ O terreno novo tem subcategorias que não existiam em Amarvento e que ainda não
 | `Invalid Token` ou `Token expirado` | O token expira. Faz zoom no mapa (gera um token novo) e cola o script de novo |
 | "O Windows protegeu o computador" | Clica em **Mais informações > Executar mesmo assim** (aparece por o ficheiro vir da internet) |
 | Select Interpreter só mostra *Enter Interpreter Path* | Python não instalado: instala Python 3.12 pela Microsoft Store / Company Portal e reabre o VS Code |
+| `ModuleNotFoundError: No module named 'geopandas'` | Faltam bibliotecas: corre de novo a versão atual do `processar.py` (instala-as sozinho) ou `python -m pip install geopandas matplotlib` |
 | `Falta o Python` | Instala o Python pela Microsoft Store ou pelo VS Code (ver Preparação) |
 | `pip` falha ou demora muito (rede da empresa) | Pede à IT que libere `pypi.org` ou que instale `geopandas` e `matplotlib` |
 | Uma camada aparece como `INCOMPLETA` | A área é demasiado grande. Divide-a em duas |
