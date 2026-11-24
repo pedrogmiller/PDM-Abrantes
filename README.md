@@ -18,7 +18,8 @@ Não é preciso programar. Guia com todos os cliques e erros comuns: **[4_Como_R
 |---|---|
 | **`1_Shapefiles/`** | **O resultado principal.** Um shapefile por subcategoria, em `Ordenamento/` e `Condicionantes/`, já com cores (`.qml`, o QGIS aplica sozinho) e campos `REGIME` e `BASE` (artigo). |
 | `2_Google_Earth/` | O mesmo num KMZ com cores, organizado por regime (o Google Earth ignora os `.qml`). |
-| `3_Legenda_e_Regras/` | Legenda, matriz de regime com os artigos, linha das renováveis da tabela do RJREN e o Regulamento do PDM. |
+| `3_Legenda_e_Regras/` | Legenda, matriz de regime com os artigos e a imagem da linha das renováveis da tabela do RJREN. |
+| `Bibliografia/` | As leis usadas, em PDF: Regulamento do PDM de Abrantes (Aviso 23477/2026), RJREN (consolidado e DL 166/2008 original, com a tabela do Anexo II), sobreiro (DL 169/2001), Domínio Público Hídrico (Lei 54/2005), RAN (DL 73/2009), oliveiras (DL 120/86) e SGIFR (DL 82/2021). |
 | `4_Como_Repetir/` | Guia passo a passo e scripts. |
 | `_tecnico/` | Para validar ou refazer: camadas tal como vieram do servidor, JSON originais, PIF generalizada e agregados para o `gerar_implantacao.py`. |
 
@@ -32,6 +33,7 @@ Não é preciso programar. Guia com todos os cliques e erros comuns: **[4_Como_R
 - Espaço Florestal de Proteção (art. 97.º) e o alcance do art. 42.º b) a infraestruturas são leituras estritas, a confirmar com a Câmara/CCDR.
 
 ## Limitações
+- RSLEAT (linhas elétricas) e Portaria 419/2012 (REN) foram citados de memória, sem o texto no repositório; estão marcados com ⚠ na matriz.
 - Só o PDM. Rede Natura, servidões aeronáuticas e outras restrições fora do PDM não estão incluídas.
 - Os polígonos são inteiros (não recortados pela área pedida).
 - A perigosidade de incêndio em `1_Shapefiles/` está generalizada (manchas < 500 m² absorvidas pela vizinha) para se ler bem no mapa. Para medir áreas usa a original exata, `_tecnico/camadas_originais/145_PIF_Abrantes_2025.shp`.
