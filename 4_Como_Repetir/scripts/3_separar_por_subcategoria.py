@@ -5,7 +5,7 @@ import geopandas as g
 import sys
 J, S, O = sys.argv[1], sys.argv[2], sys.argv[3]
 shutil.rmtree(O, ignore_errors=True)
-d=json.load(open(J)); L={l['id']:l for l in d['layers']}
+d=json.load(open(J, encoding="utf-8")); L={l['id']:l for l in d['layers']}
 def chain(i):
     out=[]; l=L[i]
     while l.get('parent') and l['parent'].get('id',-1)>=0: l=L[l['parent']['id']]; out.append(l['name'].strip())

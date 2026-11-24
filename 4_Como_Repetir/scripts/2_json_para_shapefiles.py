@@ -7,7 +7,7 @@ from shapely.geometry import Polygon, MultiPolygon, LineString, MultiLineString,
 src, outdir = sys.argv[1], sys.argv[2]
 pif = sys.argv[3] if len(sys.argv) > 3 else None
 os.makedirs(outdir, exist_ok=True)
-d = json.load(open(src))
+d = json.load(open(src, encoding="utf-8"))
 L = {l['id']: l for l in d['layers']}
 SKIP = {43, 45, 46, 48, 49}  # cartografia / limites administrativos
 def poly(rings):
@@ -52,7 +52,7 @@ for k, v in d['data'].items():
 import glob
 if pif:
   for f in glob.glob(f"{outdir}/089_*")+glob.glob(f"{outdir}/145_*"): os.remove(f)
-  P = json.load(open(pif))
+  P = json.load(open(pif, encoding="utf-8"))
   rows = [{k[:10]: v for k, v in f['attributes'].items() if 'Shape' not in k and 'SHAPE' not in k} for f in P['features']]
   G = gpd.GeoDataFrame(rows, geometry=[poly(f['geometry']['rings']) for f in P['features']], crs=3763)
   G.to_file(f"{outdir}/145_PIF_Abrantes_2025.shp", encoding='utf-8')
