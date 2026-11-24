@@ -15,7 +15,7 @@ Para confirmar que o Python ficou instalado: abre o VS Code > menu **Terminal > 
 ## Passo 1. No browser (Chrome ou Edge): localizar o terreno e descarregar o PDM
 1. Abre o visualizador MuniSIG da Câmara de Abrantes. Na lista **Layers**, abre **Planos de Ordenamento do Território** e liga o **PDM 2026** (com Ordenamento e Condicionantes). Desliga o **ortofotomapa** e outras camadas pesadas: não entram no download e o mapa fica mais rápido.
    - Não é preciso escolher subcategorias: o script descarrega **todas** as camadas do PDM 2026, ligadas ou não. O PDM 2026 tem de estar ligado só para o script conseguir ler o token e a área do mapa.
-2. **Localiza o terreno a analisar** (pesquisa por morada/freguesia ou navega no mapa) e faz zoom até ele **ocupar o ecrã, com a margem que quiseres à volta** (por exemplo 200 m). O que estiver visível é a área que vai ser descarregada.
+2. **Localiza o terreno a analisar** (pesquisa por morada/freguesia ou navega no mapa) e faz zoom até ele **ocupar o ecrã, com a margem que quiseres à volta** (por exemplo 200 m). O que estiver visível é a área que vai ser descarregada. Faz isto **depois** de ligar as camadas: cada movimento do mapa gera um pedido novo, e o script usa o último, que é o da vista final.
 3. Carrega em **F12** e, no painel que abre, vai ao separador **Console**.
 4. Abre `scripts/1_extrair_tudo.js` com o Bloco de Notas, seleciona tudo (Ctrl+A), copia, cola na Console e carrega Enter. Se o Chrome pedir, escreve primeiro `allow pasting` e Enter.
 5. Aparecem duas janelas, normalmente já preenchidas: o **token** e a **área visível**. Carrega OK nas duas.
