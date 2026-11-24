@@ -1,6 +1,6 @@
 # PDM-Abrantes
 
-Plano Diretor Municipal de Abrantes (PDM 2026) em shapefiles editáveis, com cada subcategoria classificada como **interdita, condicionada ou permitida** para a implantação de uma infrastrutura de producao de Energia Renovavel (e.g. eólico, solar) (Regulamento do PDM + RJREN). Área atual: zona do parque Amarvento (4 prédios + 200 m).
+Plano Diretor Municipal de Abrantes (PDM 2026) em shapefiles editáveis, com cada subcategoria classificada como **interdita, condicionada ou permitida** para a implantação de uma infrastrutura de producao de Energia Renovavel (e.g. eólico, solar) (Regulamento do PDM + RJREN). Área atual: Herdade da Lampreia (4 prédios + 200 m).
 
 Fonte: MuniSIG de Abrantes, serviço `PMOTs/PDM_2026/MapServer` (polígonos originais da Câmara, não vectorização de imagens). Coordenadas: **EPSG:3763 (PT-TM06/ETRS89)**.
 
