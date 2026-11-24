@@ -1,6 +1,9 @@
 import json, glob, os, re, unicodedata, shutil
 import geopandas as g
-J='/mnt/project-files/PDM_Abrantes_Amarvento.json'; S='/mnt/project-files/Amarvento/PDM/camadas_originais'; O='/mnt/project-files/Amarvento/PDM/por_subcategoria'
+# PASSO 4. Um shapefile por subcategoria, em Ordenamento/ e Condicionantes/, com nomes sem acentos.
+# Uso: python 4_separar_por_subcategoria.py PDM_Abrantes.json <pasta camadas_originais> <pasta 1_Shapefiles>
+import sys
+J, S, O = sys.argv[1], sys.argv[2], sys.argv[3]
 shutil.rmtree(O, ignore_errors=True)
 d=json.load(open(J)); L={l['id']:l for l in d['layers']}
 def chain(i):
@@ -18,10 +21,12 @@ for k in d['data']:
     sec=next((p for p in c if re.match(r'P\d',p)), c[-1])
     folder=os.path.join(O, c[0]); pre=sec.split()[0]+' - '
     os.makedirs(folder, exist_ok=True)
-    src=glob.glob(f'{S}/{k:03d}_*.shp')[0]; x=g.read_file(src)
+    src=glob.glob(f'{S}/{k:03d}_*.shp')
+    if not src: continue   # ex.: 089 (PIF cortada), substituída pela 145 completa
+    x=g.read_file(src[0])
     gt=L[k]['geom']; suf={'esriGeometryPolyline':' (linhas)','esriGeometryPoint':' (pontos)'}.get(gt,'')
     base=clean(L[k]['name'])
-    inc=' - INCOMPLETO' if d['data'][str(k)].get('exceededTransferLimit') else ''
+    inc=' - INCOMPLETO' if d['data'][str(k)].get('exceededTransferLimit') and k!=145 else ''
     if k in SPLIT:
         x['SUBCAT']=SPLIT[k](x)
         for v,grp in x.groupby('SUBCAT'):
@@ -30,3 +35,9 @@ for k in d['data']:
         f=os.path.join(folder, pre+base+suf+inc+'.shp')
         if os.path.exists(f): f=f[:-4]+f' {k}.shp'
         x.to_file(f, encoding='utf-8'); print(os.path.relpath(f,O), len(x))
+
+# nomes sem acentos (o Windows estraga-os dentro de zips)
+def a(t): return unicodedata.normalize('NFKD',t).encode('ascii','ignore').decode()
+for dd,dirs,files in os.walk(O, topdown=False):
+    for x in files+dirs:
+        if a(x)!=x: os.rename(os.path.join(dd,x),os.path.join(dd,a(x)))

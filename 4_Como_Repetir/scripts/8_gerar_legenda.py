@@ -1,6 +1,10 @@
+# PASSO 8. Legenda PNG a partir de regimes.py.
+# Uso: python 8_gerar_legenda.py <saida.png>
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
-ns={}; exec(open('estilos.py',encoding='utf-8').read().split('def rgb')[0],ns); M=ns['M']
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from regimes import M
 hat={'hatch':'///','cross':'xx','dots':'..','solid':None}
 rows=[]
 for r in ['Interdito','Condicionado','Permitido','Informativo']:
@@ -18,4 +22,4 @@ for i,row in enumerate(rows):
     ax.text(6.6,y,base,fontsize=6.5,va='center',color='#444')
 ax.text(0,-len(rows)-1.2,'Sobreposições: aplica-se sempre o regime mais restritivo. EEM = Estrutura Ecológica Municipal (P1.2).\n'
  'Leitura estrita do regulamento; os pontos marcados "confirmar com a CM" e o alcance do art. 42.º b) a infraestruturas devem ser validados com a Câmara/CCDR.',fontsize=7,va='center',color='#333')
-plt.savefig('/mnt/project-files/Amarvento/PDM/mapas/Legenda_regime_por_subcategoria.png',dpi=150,bbox_inches='tight')
+plt.savefig(sys.argv[1],dpi=150,bbox_inches='tight')
