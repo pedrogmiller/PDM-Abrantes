@@ -21,7 +21,7 @@ Para confirmar que o Python ficou instalado: abre o VS Code > menu **Terminal > 
 4. Abre `scripts/1_extrair_tudo.js` com o Bloco de Notas, seleciona tudo (Ctrl+A) e copia (Ctrl+C).
 5. **Só da primeira vez:** o browser não deixa colar na Console e mostra um aviso a pedir que escrevas `allow pasting` (escreve exatamente a frase que o aviso mostrar). Escreve-a à mão na Console, carrega Enter, e depois cola outra vez.
 6. Cola na Console (Ctrl+V) e carrega Enter.
-7. Se aparecer a vermelho **"Faz agora um pequeno zoom no mapa"**, faz um zoom (roda do rato) no mapa.
+7. Se aparecer a vermelho **"Com o cursor do rato, mexe ligeiramente o mapa…"**, arrasta um pouco o mapa. Se as janelas seguintes vierem vazias, preenche-as com o `token` e o `bbox` do Network (ver abaixo).
 8. Aparecem duas janelas, normalmente já preenchidas: o **token** e a **área visível**. Carrega OK nas duas.
 9. Espera pela linha `FEITO` (alguns minutos). O ficheiro `PDM_Abrantes.json` fica nas Transferências.
 
@@ -33,10 +33,13 @@ Para confirmar que o Python ficou instalado: abre o VS Code > menu **Terminal > 
 
 **Opção B, pelo VS Code** (se o `.bat` estiver bloqueado):
 1. VS Code > **File > Open Folder** > escolhe a pasta `4_Como_Repetir`.
-2. Só da primeira vez: **Terminal > New Terminal**, escreve `python -m pip install geopandas matplotlib` e Enter. Espera que acabe.
-3. Abre `scripts/processar.py` e carrega no **▶** (canto superior direito).
+2. Só da primeira vez:
+   - **Restricted Mode:** na barra em cima clica em **Restricted Mode > Trust** (ou "Yes, I trust the authors"). Sem isto o VS Code não corre nada.
+   - **Python interpreter:** Ctrl+Shift+P > escreve `Python: Select Interpreter` > escolhe o **Python 3.12**. Se não aparecer nenhum, o Python não está instalado (ver Preparação).
+   - **Terminal > New Terminal**, escreve `python -m pip install geopandas matplotlib` e Enter. Espera que acabe.
+3. No terminal escreve `python scripts/processar.py` e Enter (ou abre `scripts/processar.py` e carrega no **▶**).
 
-Nas duas opções abre-se uma janela para escolheres o `PDM_Abrantes.json`. Depois gera tudo sozinho e abre a pasta `resultado_PDM_Abrantes`, ao lado do ficheiro:
+O script procura o `PDM_Abrantes.json` mais recente na pasta `scripts`, em `4_Como_Repetir` e nas Transferências (se quiseres ter a certeza, copia-o para `scripts`). Se não o encontrar, abre uma janela para o escolheres. Depois gera tudo sozinho e abre a pasta `resultado_PDM_Abrantes`, ao lado do ficheiro:
 
 | Pasta / ficheiro | O que é |
 |---|---|
