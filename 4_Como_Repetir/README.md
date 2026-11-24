@@ -35,7 +35,7 @@ Para confirmar que o Python ficou instalado: abre o VS Code > menu **Terminal > 
 1. VS Code > **File > Open Folder** > escolhe a pasta `4_Como_Repetir`.
 2. Só da primeira vez:
    - **Restricted Mode:** na barra em cima clica em **Restricted Mode > Trust** (ou "Yes, I trust the authors"). Sem isto o VS Code não corre nada.
-   - **Python interpreter:** Ctrl+Shift+P > escreve `Python: Select Interpreter` > escolhe o **Python 3.12**. Se não aparecer nenhum, o Python não está instalado (ver Preparação).
+   - **Python interpreter:** Ctrl+Shift+P > escreve `Python: Select Interpreter` > escolhe o **Python 3.12**. Se a lista só mostrar *Enter Interpreter Path* / *Browse*, o Python não está instalado: fecha o VS Code, instala **Python 3.12** pela Microsoft Store ou Company Portal, volta a abrir o VS Code e repete. (Para confirmar, no terminal do VS Code escreve `python --version`: se abrir a Store ou der erro, falta instalar.)
    - **Terminal > New Terminal**, escreve `python -m pip install geopandas matplotlib` e Enter. Espera que acabe.
 3. No terminal escreve `python scripts/processar.py` e Enter (ou abre `scripts/processar.py` e carrega no **▶**).
 
@@ -59,6 +59,7 @@ O terreno novo tem subcategorias que não existiam em Amarvento e que ainda não
 | A Console não deixa colar | Escreve à mão a frase que o aviso pede (`allow pasting`), Enter, e cola de novo |
 | `Invalid Token` ou `Token expirado` | O token expira. Faz zoom no mapa (gera um token novo) e cola o script de novo |
 | "O Windows protegeu o computador" | Clica em **Mais informações > Executar mesmo assim** (aparece por o ficheiro vir da internet) |
+| Select Interpreter só mostra *Enter Interpreter Path* | Python não instalado: instala Python 3.12 pela Microsoft Store / Company Portal e reabre o VS Code |
 | `Falta o Python` | Instala o Python pela Microsoft Store ou pelo VS Code (ver Preparação) |
 | `pip` falha ou demora muito (rede da empresa) | Pede à IT que libere `pypi.org` ou que instale `geopandas` e `matplotlib` |
 | Uma camada aparece como `INCOMPLETA` | A área é demasiado grande. Divide-a em duas |
