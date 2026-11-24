@@ -1,5 +1,5 @@
-# PASSO 6. Escreve os campos REGIME e BASE e um .qml (cores para o QGIS) ao lado de cada shapefile.
-# Uso: python 6_aplicar_cores.py <pasta 1_Shapefiles>
+# PASSO 5. Escreve os campos REGIME e BASE e um .qml (cores para o QGIS) ao lado de cada shapefile.
+# Uso: python 5_aplicar_cores.py <pasta 1_Shapefiles>
 import geopandas as g, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from regimes import M
