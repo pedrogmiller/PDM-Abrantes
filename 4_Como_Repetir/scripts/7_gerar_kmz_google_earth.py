@@ -1,6 +1,9 @@
 import geopandas as g, os, zipfile, html, sys
-SC=sys.argv[1]; R='/mnt/project-files/Amarvento/PDM/por_subcategoria'
-ns={}; exec(open(SC+'/estilos.py').read().split('def rgb')[0],ns); M=ns['M']
+# PASSO 7. KMZ para o Google Earth com as mesmas cores (o Google Earth ignora os .qml).
+# Uso: python 7_gerar_kmz_google_earth.py <pasta 1_Shapefiles> <saida.kmz>
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from regimes import M
+R=sys.argv[1]
 def abgr(h,a): h=h.lstrip('#'); return f'{a:02x}{h[4:6]}{h[2:4]}{h[0:2]}'
 def coords(r): return ' '.join(f'{x:.6f},{y:.6f}' for x,y in r.coords)
 def poly(p):
@@ -14,7 +17,7 @@ def geom(gm):
     if t=='Point': return f'<Point><coordinates>{gm.x:.6f},{gm.y:.6f}</coordinates></Point>'
     return '<MultiGeometry>'+''.join(geom(x) for x in gm.geoms)+'</MultiGeometry>'
 order={'Interdito':0,'Condicionado':1,'Permitido':2,'Informativo':3}
-out=['<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>PDM Abrantes 2026 – regime de implantação (Amarvento)</name>']
+out=['<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>PDM Abrantes 2026 – regime de implantação</name>']
 folders={}
 for i,(k,(reg,base,cor,pat)) in enumerate(M.items()):
     sid=f's{i}'; line=pat in('line',)
@@ -31,6 +34,6 @@ for reg in sorted(folders,key=order.get):
         if sub: out.append(f'<Folder><name>{grp}</name>'+''.join(sub)+'</Folder>')
     out.append('</Folder>')
 out.append('</Document></kml>')
-p='/mnt/project-files/Amarvento/PDM/PDM_Abrantes_regime_Amarvento.kmz'
+p=sys.argv[2]
 with zipfile.ZipFile(p,'w',zipfile.ZIP_DEFLATED) as z: z.writestr('doc.kml',''.join(out))
 print(os.path.getsize(p)//1024,'KB')

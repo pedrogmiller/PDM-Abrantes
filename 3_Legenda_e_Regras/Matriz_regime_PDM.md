@@ -1,7 +1,6 @@
 # Matriz de condicionamento PDM Abrantes (2026) – Amarvento
 
 Fonte: Regulamento do PDM, Aviso n.º 23477/2026/2 (DR n.º 185, 2.ª série, 23/09/2026), e legislação das servidões.
-Layout cruzado: V163 HH113 (plataformas de `SIG_Implantacao`) + acessos do KMZ licenciado (24.08.13).
 Legenda: 🟢 permitido · 🟡 condicionado (parecer, estudo ou compensação) · 🔴 interdito ou de risco alto.
 RJREN confirmado no Anexo II do DL 166/2008 (DR 1.ª série n.º 162, 22/08/2008, p. 5881). Os itens marcados com ⚠ vêm da legislação geral, citada de memória: confirmar antes de usar num processo.
 
@@ -23,25 +22,3 @@ RJREN confirmado no Anexo II do DL 166/2008 (DR 1.ª série n.º 162, 22/08/2008
 | P2.2 Sobreiros (povoamento) | 🟡 | art. 28.º; DL 169/2001 ⚠ | Abate em povoamento só com declaração de imprescindível utilidade pública (DIUP) e compensação; árvores isoladas com autorização do ICNF |
 | P2.2 Domínio Público Hídrico | 🟡 | Lei 54/2005 ⚠ | Título de utilização dos recursos hídricos (APA) |
 | P2.2 Oliveiras | 🟡 | DL 120/86 ⚠ | Arranque precisa de autorização |
-
-## 2. Resultado para o layout atual (m² afetados)
-
-| Camada | Permanente | Provisório | Onde |
-|---|---:|---:|---|
-| Espaço Florestal de Produção | 72 098 | 36 537 | todas as WTG e acessos |
-| 🔴 Espaço Florestal de Proteção | 1 945 | 8 | acessos (1 937 m²); WTG2: 8 m² da montagem da lança |
-| 🟡 Sobreiros (povoamento) | 2 156 | 0 | acessos |
-| 🔴/🟡 EEM: REN-AEREHS | 529 | 0 | acessos |
-| 🔴/🟡 EEM: REN-cursos de água | 359 | 0 | acessos |
-| Rede primária de FGC | 23 315 | 9 416 | WTG6, WTG7, WTG8 e acessos |
-| Perigosidade Alta | ver CSV | | WTG1 (489), WTG3 (40), WTG4 (1 103), WTG5 (1 085), WTG10 (409), acessos (3 205) |
-| Perigosidade Muito Alta | ver CSV | | WTG4 (38), WTG10 (122), acessos (228) |
-| Domínio Público Hídrico | 737 | 0 | acessos |
-| REN: leitos e margens / AEREHS | 359 / 529 | 0 | acessos |
-| Servidão da rede elétrica | 557 | 0 | acessos |
-| Oliveiras | 45 | 213 | WTG8 e acessos |
-| Instabilidade de vertentes, RAN, Espaço Agrícola | 0 | 0 | nenhuma |
-
-**Leitura:** nenhuma plataforma de turbina cai em categoria interdita. Os pontos a resolver estão nos **acessos**: travessia de Espaço Florestal de Proteção, de povoamento de sobreiro e de linhas de água (EEM, REN e DPH). Se esses troços forem caminhos já existentes, a beneficiar sem alterar a morfologia, o risco baixa muito. A WTG2 resolve-se encurtando ou rodando a área de montagem da lança (8 m²).
-
-PIF completa (6 781 polígonos); detalhe por turbina em `cruzamento_layout_PIF.csv`. As áreas sem cor no mapa não têm classe atribuída na PIF.
