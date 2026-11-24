@@ -18,9 +18,12 @@ Para confirmar que o Python ficou instalado: abre o VS Code > menu **Terminal > 
 2. **Localiza o terreno a analisar** (pesquisa por morada/freguesia ou navega no mapa) e faz zoom até ele **ocupar o ecrã, com a margem que quiseres à volta** (por exemplo 200 m). O que estiver visível é a área que vai ser descarregada. Faz isto **depois** de ligar as camadas: cada movimento do mapa gera um pedido novo, e o script usa o último, que é o da vista final.
    - 💡 **Dica:** se mudares alguma camada depois de enquadrar, ou se passar muito tempo (o token expira), faz um pequeno zoom antes de colar o script.
 3. Carrega em **F12** e, no painel que abre, vai ao separador **Console**.
-4. Abre `scripts/1_extrair_tudo.js` com o Bloco de Notas, seleciona tudo (Ctrl+A), copia, cola na Console e carrega Enter. Se o Chrome pedir, escreve primeiro `allow pasting` e Enter.
-5. Aparecem duas janelas, normalmente já preenchidas: o **token** e a **área visível**. Carrega OK nas duas.
-6. Espera pela linha `FEITO` (alguns minutos). O ficheiro `PDM_Abrantes.json` fica nas Transferências.
+4. Abre `scripts/1_extrair_tudo.js` com o Bloco de Notas, seleciona tudo (Ctrl+A) e copia (Ctrl+C).
+5. **Só da primeira vez:** o browser não deixa colar na Console e mostra um aviso a pedir que escrevas `allow pasting` (escreve exatamente a frase que o aviso mostrar). Escreve-a à mão na Console, carrega Enter, e depois cola outra vez.
+6. Cola na Console (Ctrl+V) e carrega Enter.
+7. Se aparecer a vermelho **"Faz agora um pequeno zoom no mapa"**, faz um zoom (roda do rato) no mapa.
+8. Aparecem duas janelas, normalmente já preenchidas: o **token** e a **área visível**. Carrega OK nas duas.
+9. Espera pela linha `FEITO` (alguns minutos). O ficheiro `PDM_Abrantes.json` fica nas Transferências.
 
 **Se a janela do token vier vazia:** separador **Network** do mesmo painel, faz um pequeno zoom no mapa, clica num pedido `export?...` > separador **Payload** > copia o valor de **`token`** e cola-o na janela.
 **Se a janela da área vier vazia** (ou quiseres uma área exata): escreve `xmin,ymin,xmax,ymax` em EPSG:3763. No QGIS tiras isto da extensão dos prédios com um buffer (Propriedades da camada > Informação). Exemplo (Amarvento): `12237,-28202,16397,-25509`.
@@ -50,6 +53,7 @@ O terreno novo tem subcategorias que não existiam em Amarvento e que ainda não
 ## Problemas comuns
 | Mensagem | O que fazer |
 |---|---|
+| A Console não deixa colar | Escreve à mão a frase que o aviso pede (`allow pasting`), Enter, e cola de novo |
 | `Invalid Token` ou `Token expirado` | O token expira. Faz zoom no mapa (gera um token novo) e cola o script de novo |
 | "O Windows protegeu o computador" | Clica em **Mais informações > Executar mesmo assim** (aparece por o ficheiro vir da internet) |
 | `Falta o Python` | Instala o Python pela Microsoft Store ou pelo VS Code (ver Preparação) |
